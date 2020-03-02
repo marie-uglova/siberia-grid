@@ -1,0 +1,292 @@
+@import 'fonts.sass';
+@import 'vars.sass';
+@import 'mixins';
+
+html,
+body {
+	background: $background-color;
+	width: 100%;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: $font-family;
+	font-size: 16px;
+	line-height: 1.3em;
+	background-image: url(../img/background-bg.svg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	@media screen and (min-width:1200px) {
+		background-position: 0 0;
+	}
+}
+img {
+	max-width: 100%;
+}
+h1 {
+	font-family: $font-family;
+	font-size: 44px;
+	line-height: 1.3em;
+	font-weight: 500;
+	padding: 0;
+	margin: 0;
+}
+h3 {
+	font-family: $font-family;
+	font-size: 20px;
+	line-height: 1.3em;
+	font-weight: 500;
+	padding: 0;
+	margin: 0;
+}
+.button {
+	display: block;
+	font-family: $font-family;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: 500;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 100px;
+	padding: 17px;
+	cursor: pointer;
+	color: $white-color;
+	background: $orange-color;
+	@media screen and (min-width:1200px) {
+		padding: 17px 30px;
+		display: inline-block;
+	}
+	&:hover {
+		opacity: 0.95;
+	}
+}
+.mobile-hidden {
+	display: none;
+	@media screen and (min-width:1200px) {
+		display: block;
+	}
+}
+.container {
+	min-width: 280px;
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 20px;
+	display: grid;
+	@media screen and (min-width:1200px) {
+		grid-template-areas: "header header header" "aside bubble ads";
+		grid-template-columns: 23% 1fr 30%;
+		grid-column-gap: 20px;
+		padding: 0;
+	}
+}
+.header {
+	grid-row: 3;
+	padding: 20px 0 0 0;
+	@media screen and (min-width:1200px) {
+		grid-area: header;
+		grid-row: 1;
+		padding: 60px 0 45px;
+	}
+	&__title {
+		color: $white-color;
+		position: relative;
+		font-size: 0;
+		line-height: 0;
+		&::before {
+			content: "";
+			display: block;
+			background: url(../img/round-pic1.svg) 0 0 no-repeat;
+			width: 275px;
+			height: 151px;
+		}
+		@media screen and (min-width:1200px) {
+			padding-right: 350px;
+			font-size: 44px;
+			line-height: 1.3em;
+			&::before {
+				position: absolute;
+				top: -50px;
+				right: 70px;
+			}
+			&::after {
+				content: "";
+				display: block;
+				background: url(../img/round-pic2.svg) 0 0 no-repeat;
+				width: 84px;
+				height: 84px;
+				position: absolute;
+				top: -70px;
+				right: 0px;
+			}
+		}
+	}
+}
+.leftbar {
+	color: $white-color;
+	font-weight: 500;
+	@media screen and (min-width:1200px) {
+		grid-area: aside;
+	}
+	&__number {
+		font-size: 36px;
+		margin-right: 2px;
+	}
+	&__intro {
+		margin: 0 0 20px 0;
+		@media screen and (min-width:1200px) {
+			margin: 0 0 30px 0;
+		}
+		&_gap {
+			padding-left: 20px;
+		}
+	}
+	&__top {
+		display: grid;
+		grid-template-columns: 75px 1fr;
+		@media screen and (min-width:1200px) {
+			display: block;
+		}
+		&-scale {
+			max-width: 85%;
+			@media screen and (min-width:1200px) {
+				display: none;
+			}
+		}
+	}
+}
+.mainblock {
+	@media screen and (min-width:1200px) {
+		grid-area: bubble;
+	}
+}
+.bubble {
+	background: $white-color;
+	box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+	border-radius: 24px;
+	position: relative;
+	font-weight: 500;
+	min-height: 220px;
+	@media screen and (min-width:1200px) {
+		margin: 0 17px 0 0px;
+		min-height: 250px;
+		border-radius: 34px;
+	}
+	&::after {
+		display: table;
+		clear: both;
+	}
+	&__tail {
+		@include arrow(down, 0px, 18px, 18px, $white-color);
+		position: absolute;
+		right: auto;
+		left: 50px;
+		bottom: -18px;
+		@media screen and (min-width:1200px) {
+			@include arrow(down, 18px, 0px, 18px, $white-color);
+			left: auto;
+			right: 50px;
+		}
+	}
+	&__image {
+		float: right;
+		margin: -10px -10px 10px 20px;
+	}
+	&__title {
+		letter-spacing: -0.5px;
+		color: $purple-color;
+		margin: 5px 0 22px;
+		animation: bubbleAnimation 2s infinite;
+	}
+	&__name {
+		display: grid;
+		grid-template-columns: 23px 1fr;
+		align-items: center;
+		animation: bubbleAnimation 2s infinite;
+		&-text {
+			padding-left: 10px;
+			letter-spacing: -0.3px;
+			color: $blue-color;
+			font-weight: 300;
+			@media screen and (min-width:1200px) {
+				color: $gray-color;
+				font-weight: 500;
+			}
+		}
+	}
+	&__intro {
+		font-weight: 300;
+		line-height: 1.4em;
+		margin: 8px 0 0 0;
+		color: $gray-color;
+		animation: bubbleAnimation 2s infinite;
+		@media screen and (min-width:1200px) {
+			margin: 20px 0 0 0;
+		}
+	}
+	&__slide {
+		position: absolute;
+		top: 0;
+		width: calc(100% - 56px);
+		padding: 15px 18px 0;
+		transition: opacity 0.2s ease-out;
+		opacity: 0;
+		overflow: hidden;
+		height: 180px;
+		@media screen and (min-width:1200px) {
+			padding: 28px 28px 0;
+			height: 185px;
+		}
+		&_active {
+			opacity: 1;
+		}
+	}
+}
+.rightbar {
+	color: $white-color;
+	font-weight: 500;
+	position: relative;
+	margin-top: 40px;
+	@media screen and (min-width:1200px) {
+		grid-area: ads;
+		margin: 0;
+	}
+	&::after {
+		content: "";
+		display: block;
+		background: url(../img/round-pic3.svg) 0 0 no-repeat;
+		width: 290px;
+		height: 171px;
+		margin-top: 35px;
+	}
+	&__info {
+		margin: 0 0 20px 0;
+		@media screen and (min-width:1200px) {
+			margin: 20px 0;
+		}
+	}
+}
+/* keyframes для анимации бабла */
+@keyframes bubbleAnimation {
+	0%, 60%, 75%, 90%, to {
+		animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+	}
+	0% {
+		opacity: 0;
+		transform: translate3d(10px, 0, 0)
+	}
+	60% {
+		opacity: 1;
+		transform: translate3d(-5px, 0, 0)
+	}
+	75% {
+		transform: translate3d(10px, 0, 0)
+	}
+	90% {
+		transform: translate3d(-5px, 0, 0)
+	}
+	to {
+		transform: translateZ(0)
+	}
+}

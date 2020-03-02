@@ -1,0 +1,1 @@
+var l=0,t=document.querySelectorAll(".bubble__slide");setInterval(function(){for(var e=0;e<t.length;e++)t[e].classList.remove("bubble__slide_active");l=l!==t.length-1?l+1:0,t[l].classList.add("bubble__slide_active")},2e3);
